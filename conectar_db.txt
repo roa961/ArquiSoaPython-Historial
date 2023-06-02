@@ -1,0 +1,12 @@
+psql -U myuser -d mydatabase -p 5432 -h localhost
+
+SELECT peso, altura, enfermedades_base, procedimientos_realizados 
+FROM historiales_medicos, usuarios, pacientes 
+WHERE paciente_id = pacientes.id 
+and usuarios.id = pacientes.usuario_id 
+and rut = 'ejemploRut';
+
+---Insertar en db para test con usuario ejemploRut ---
+
+insert into historiales_medicos(paciente_id, peso, altura,  enfermedades_base, procedimientos_realizados)
+values ('1', '50', '90', 'diabetes', 'insulina');
