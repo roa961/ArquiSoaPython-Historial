@@ -13,11 +13,14 @@ try:
 
     while True:
         # Read message from keyboard input
-        message = input("Enviar mensaje: ").split("\n")[0]
-
+        rut = input("Ingresar rut: ").split("\n")[0]
+        tamanio_mensaje = len(rut) + 6
+        sizetosend = str(tamanio_mensaje).rjust(5, '0')
+        frase = sizetosend + 'histr' + ' ' + rut
         #message = '00005getsv'
         # Send the message
-        sock.sendall(message.encode())
+        sock.sendall(frase.encode())
+        
         ##print('Sent: {}'.format(message))
 
         # Receive the server's response
