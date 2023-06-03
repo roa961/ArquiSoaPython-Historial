@@ -9,20 +9,20 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 try:
     # Connect to the server
     sock.connect(server_address)
-    print('Connected to {}:{}'.format(*server_address))
+    print('Conectado a {}:{}'.format(*server_address))
 
     while True:
         # Read message from keyboard input
-        message = input("Send message: ").split("\n")[0]
+        message = input("Enviar mensaje: ").split("\n")[0]
 
         #message = '00005getsv'
         # Send the message
         sock.sendall(message.encode())
-        print('Sent: {}'.format(message))
+        ##print('Sent: {}'.format(message))
 
         # Receive the server's response
         response = sock.recv(1024).decode()
-        print('Received: {}'.format(response))
+        print('Respuesta: {}'.format(response[13:]))
 
 
 finally:
